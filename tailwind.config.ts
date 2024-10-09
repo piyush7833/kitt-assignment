@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { CSSRuleObject } from "tailwindcss/types/config";
 
 const config: Config = {
   content: [
@@ -12,8 +13,30 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      scrollbarHide: {
+        'hideScrollBar': {
+          '::-webkit-scrollbar': {
+            display: 'none',
+          },
+          '-ms-overflow-style': 'none', /* IE and Edge */
+          'scrollbar-width': 'none' /* Firefox */
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }: { addUtilities: (utilities: CSSRuleObject | CSSRuleObject[], options?: Partial<{ respectPrefix: boolean; respectImportant: boolean }>) => void }) {
+      const newUtilities = {
+        '.hideScrollBar': {
+          '::-webkit-scrollbar': {
+            display: 'none',
+          },
+          '-ms-overflow-style': 'none', /* IE and Edge */
+          'scrollbar-width': 'none', /* Firefox */
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ]
 };
 export default config;
