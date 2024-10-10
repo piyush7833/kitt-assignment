@@ -32,7 +32,7 @@ const Input = ({icon,text,type,options,onChange,value}:propsType) => {
         <input 
         type="date"  
         placeholder={text} 
-        className="input border-none focus:border-none border-white active:border-none placeholder:text-[#484A4D] px-6" 
+        className="input border-none focus:border-none border-white active:border-none placeholder:text-[#484A4D] w-[200px]" 
         onChange={(e)=>onChange && onChange(e.target.value)} 
         min={new Date().toISOString().split('T')[0]} 
         value={value} 

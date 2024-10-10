@@ -22,13 +22,13 @@ const LoadingModal = () => {
       <div className="bg-white rounded-lg shadow-lg flex flex-col items-center space-y-4 p-16">
         <div className="">
           <Image
-            src="/images/flight.png"
+            src="/images/flight.gif"
             alt="loading"
-            width={50}
-            height={50}
+            width={100}
+            height={100}
           />
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex space-x-2">
           {step >= 1 ? (
             <FaCheckCircle className="text-green-500" />
           ) : (
@@ -36,7 +36,7 @@ const LoadingModal = () => {
           )}
           <p className="text-lg text-gray-500">Searching 400+ flights</p>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex  space-x-2">
           {step >= 2 ? (
             <FaCheckCircle className="text-green-500" />
           ) : step>=1?(
@@ -44,7 +44,7 @@ const LoadingModal = () => {
           ):""}
           <p className="text-sm text-gray-500">Attaching company rules</p>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex  space-x-2">
           {step >= 3 ? (
             <FaCheckCircle className="text-green-500" />
           ) :step>=2? (
