@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import Search from "./Search";
@@ -12,13 +12,24 @@ type propsType = {
 };
 const Searchbar = ({ from, to, date, returnDate }: propsType) => {
   const formattedDate = formatDate(date, returnDate);
-  const [show, setShow] = useState(false);
+const [show, setShow] = useState(false);
+
+useEffect(() => {
+    const handleScroll = () => {
+        setShow(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+        window.removeEventListener("scroll", handleScroll);
+    };
+}, []);
   const router = useRouter();
   if (show) {
     return (
     <div className="fixed inset-0 flex items-start justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white w-full rounded-lg flex justify-center">
-        <Search isNav={true} handleNavClick={() => setShow(false)} />
+        <Search isNav={true} handleNavClick={() => setShow(false)} fromNav={from} toNav={to} returnDateNav={returnDate} fromDateNav={date} />
       </div>
     </div>
     );

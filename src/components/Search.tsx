@@ -12,13 +12,17 @@ import { useRouter } from 'next/navigation';
 type propsType={
   isNav:boolean,
   handleNavClick?:()=>void
+  fromNav?:string
+  toNav?:string
+  fromDateNav?:string
+  returnDateNav?:string
 }
 
-const Search = ({isNav,handleNavClick}:propsType) => {
-    const[from,setFrom]=useState<string>('')
-    const[to,setTo]=useState<string>('')
-    const [fromDate,setFromDate]=useState<string>('')
-    const [returnDate,setReturnDate]=useState<string>('')
+const Search = ({isNav,handleNavClick,fromNav,fromDateNav,toNav,returnDateNav}:propsType) => {
+    const[from,setFrom]=useState<string>(fromNav?fromNav:'')
+    const[to,setTo]=useState<string>(toNav?toNav:'')
+    const [fromDate,setFromDate]=useState<string>(fromDateNav?fromDateNav:'')
+    const [returnDate,setReturnDate]=useState<string>(returnDateNav?returnDateNav:'')
     
     const [fromOptions,setFromOption]=useState<string []>([])
     const [toOptions,setToOption]=useState<string []>([])

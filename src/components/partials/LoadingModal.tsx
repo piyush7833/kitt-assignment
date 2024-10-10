@@ -28,7 +28,7 @@ const LoadingModal = () => {
             height={100}
           />
         </div>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 items-start">
           {step >= 1 ? (
             <FaCheckCircle className="text-green-500" />
           ) : (
