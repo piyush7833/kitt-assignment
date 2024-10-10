@@ -4,7 +4,7 @@ import Input from './partials/Input'
 import { TfiLocationPin } from "react-icons/tfi";
 import { TbArrowsRightLeft } from "react-icons/tb";
 import Button from './partials/Button';
-import { BiCalendar, BiSearch } from 'react-icons/bi';
+import {  BiSearch } from 'react-icons/bi';
 import {airports} from '../constants/flight-details.js'
 import FlightSearchLoader from './FlightSearchLoader';
 import { useRouter } from 'next/navigation';
@@ -42,7 +42,7 @@ const Search = ({isNav,handleNavClick}:propsType) => {
         setTimeout(() => {
           setLoading(false);
           router.push(`/flights?from=${from}&to=${to}&fromDate=${fromDate}&returnDate=${returnDate}`)
-        }, 3000);
+        }, 3500);
       }
       if (handleNavClick) {
         handleNavClick();
@@ -60,14 +60,14 @@ const Search = ({isNav,handleNavClick}:propsType) => {
       {!isNav && <div className="bg-[#F5F7FA] w-fit px-[12px] py-[10px] rounded-[6px] text-[16px] font-semibold">Flights</div>}
 
       <div className="flights flex gap-[24px]">
-        <Input icon={<TfiLocationPin/>} text="Where from" type="select" options={fromOptions} onChange={setFrom}/>
+        <Input icon={<TfiLocationPin/>} value={from} text="Where from" type="select" options={fromOptions} onChange={setFrom}/>
         <div className="icon rounded-full bg-[#F5F7FA] h-[52px] w-[52px] flex items-center justify-center">
             <TbArrowsRightLeft/>
         </div>
-        <Input icon={<TfiLocationPin/>} text="Where to" type="select" options={toOptions} onChange={setTo} />
+        <Input icon={<TfiLocationPin/>} value={to} text="Where to" type="select" options={toOptions} onChange={setTo} />
 
-        <Input icon={<BiCalendar/>}  text="Departure" type="text"onChange={setFromDate} />
-        <Input icon={<BiCalendar/>}  text="Return" type="text" onChange={setReturnDate} />
+        <Input  value={fromDate}  text="Departure" type="text"onChange={setFromDate} />
+        <Input  value={returnDate} text="Return" type="text" onChange={setReturnDate} />
 
       </div>
       <div className="w-full flex justify-end px-[28px] py-[28px]">
